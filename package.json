@@ -1,7 +1,7 @@
 {
   "name": "grunt-gettext-msgfmt",
   "description": "Compile .po files with msgfmt.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/betonimig/grunt-gettext-msgfmt",
   "author": {
     "name": "Ildar Migranov",

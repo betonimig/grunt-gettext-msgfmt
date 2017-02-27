@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     gettext_msgfmt: {
-      default_options: {
+      potojava: {
         options: {
             // Operation mode:
             mode: 'java2',
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
           src: 'test/fixtures/ru.po'
         }
       },
-      ru: {
+      potomo: {
         files: {
           'tmp/ru.mo': 'test/fixtures/ru.po',
         }

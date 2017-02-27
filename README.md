@@ -28,7 +28,7 @@ grunt.initConfig({
     options: {
       // Task-specific options go here.
     },
-    your_target: {
+    files: {
       // Target-specific file lists and/or options go here.
     },
   },
@@ -37,47 +37,69 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.mode
 Type: `String`
-Default value: `',  '`
+Default value: `''`
 
-A string value that is used to do something with whatever.
+Operation mode: java, java2, csharp, csharp-resources, tcl, qt, desktop, xml or ""
 
-#### options.punctuation
+#### options.verbose
+Type: `Boolean`
+Default value: true
+
+Increase verbosity level
+
+###Operation mode params
+
+#### options.resourse
 Type: `String`
-Default value: `'.'`
+Default value: `''`
 
-A string value that is used to do something else with whatever else.
+Resource name
+
+#### options.destDir
+Type: `String`
+Default value: `''`
+
+Base directory (see `man msgfmt`)
+
+#### options.locale
+Type: `String`
+Default value: `''`
+
+Locale name, either language or language_COUNTRY
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+#### Compile .po to .mo
+Compile .po files into binary .mo files.
 
 ```js
 grunt.initConfig({
   gettext_msgfmt: {
     options: {},
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'locales/en.mo': 'locales/en.po',
+      'locales/ru.mo': 'locales/ru.po',
     },
   },
 });
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+#### Compile .po with java mode
 
 ```js
 grunt.initConfig({
   gettext_msgfmt: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+        mode: 'java2',  // Operation mode
+        resourse: 'com.exampleapp.translations.messages',
+        destDir: 'target/classes',
+        locale: 'ru'
     },
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+      src: 'locales/ru.po'
+    }
   },
 });
 ```
